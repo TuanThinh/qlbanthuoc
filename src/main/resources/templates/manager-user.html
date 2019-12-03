@@ -1,0 +1,202 @@
+<!doctype html>
+
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{layouts/main-layout :: main-fragment(~{::title}, ~{::pageTitle}, ~{::mainContent}, ~{::#user-resources})}">
+
+<title>Manager User</title>
+
+<div th:fragment="pageTitle">
+	<ol class="breadcrumb text-right">
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Exercise</a></li>
+        <li class="active">ManagerUser</li>
+    </ol>
+</div>
+
+<div th:fragment="mainContent">
+	<div class="header">
+		<div class="header-left">
+			<button id="add-user" class="btn btn-primary" data-toggle="modal"
+				data-target="#modalAdd">New user</button>
+		</div>
+		<div class="header-right">
+			<input id="search" class="form-control" placeholder="Search..." />
+		</div>
+	</div>
+	<input type="hidden" id="id-user-selected">
+	<table id="table-user" class="table table-border table-hover table-striped">
+		<thead>
+			<tr>
+				<th style="display: none;">Full name</th>
+				<th>Username</th>
+				<th>Role</th>
+				<th>Enable</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>John</td>
+				<td>ROLE_ADMIN</td>
+				<td><input type="checkbox" checked="checked"
+					style="margin-left: 20px;" disabled></td>
+				<td><span data-toggle="modal" data-target="#modalEdit"><i class="fa fa-pencil-square-o" data-toggle="tooltip" title="Chỉnh sửa"></i></span> | 
+					<span data-toggle="modal" data-target="#modalDelete"><i class="fa fa-trash-o" data-toggle="tooltip" title="Xóa"></i></span></td>
+			</tr>
+		</tbody>
+	</table>
+
+
+	<!-- The Modal Add-->
+	<div class="modal" id="modalAdd">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">New</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<div class="form-group row">
+						<label class="col-md-3 col-form-label">Username</label>
+						<div class="col-md-9">
+							<input class="form-control" id="add-username" placeholder="Username">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-md-3 col-form-label">Password</label>
+						<div class="col-md-9">
+							<input type="password" class="form-control" id="add-password" placeholder="Password">
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-md-3">Enabled</div>
+						<div class="col-md-9">
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" id="add-enabled">
+								<label class="form-check-label" for="gridCheck1"> Enabled </label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-md-3">Role</div>
+						<div class="col-md-9 user-role">
+<!-- 							<div class="form-check"> -->
+<!-- 								<input class="form-check-input" type="checkbox" name="add-user-role" id="role-1"> -->
+<!-- 								<label class="form-check-label" for="gridCheck1"> ROLE_ADMIN </label> -->
+<!-- 							</div> -->
+<!-- 							<div class="form-check"> -->
+<!-- 								<input class="form-check-input" type="checkbox" name="add-user-role" id="role-2"> -->
+<!-- 								<label class="form-check-label" for="gridCheck1"> ROLE_MEMBER </label> -->
+<!-- 							</div> -->
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-md-offset-3 col-md-9">
+							<button id="btn-add-user" class="btn btn-primary">ADD</button>
+						</div>
+					</div>
+				</div>
+				<!--         Modal footer -->
+				<!--         <div class="modal-footer"> -->
+				<!--           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
+				<!--         </div> -->
+			</div>
+		</div>
+	</div>
+
+	<!-- The Modal Edit-->
+	<div class="modal" id="modalEdit">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">Edit user</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<div class="form-group row">
+						<label class="col-md-3 col-form-label">Username</label>
+						<div class="col-md-9">
+							<input class="form-control" id="edit-username" placeholder="Username">
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-md-3 col-form-label">Password</label>
+						<div class="col-md-9">
+							<input type="password" class="form-control" id="edit-password" placeholder="Password">
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-md-3">Enabled</div>
+						<div class="col-md-9">
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" id="edit-enabled">
+								<label class="form-check-label" for="gridCheck1"> Enabled </label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-md-3">Role</div>
+						<div class="col-md-9 user-role">
+<!-- 							<div class="form-check"> -->
+<!-- 								<input class="form-check-input" type="checkbox" name="edit-user" id="role-3"> -->
+<!-- 								<label class="form-check-label" for="gridCheck1"> ROLE_ADMIN </label> -->
+<!-- 							</div> -->
+<!-- 							<div class="form-check"> -->
+<!-- 								<input class="form-check-input" type="checkbox" name="edit-user" id="role-4"> -->
+<!-- 								<label class="form-check-label" for="gridCheck1"> ROLE_MEMBER </label> -->
+<!-- 							</div> -->
+						</div>
+					</div>
+					<div class="form-group row">
+						<div class="col-md-offset-3 col-md-9">
+							<button id="btn-edit-user" class="btn btn-primary">UPDATE</button>
+						</div>
+					</div>
+				</div>
+				<!--         Modal footer -->
+				<!--         <div class="modal-footer"> -->
+				<!--           <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button> -->
+				<!--         </div> -->
+			</div>
+		</div>
+	</div>
+
+	<!--   	The Modal Delete -->
+	<div id="modalDelete" class="modal">
+		<div class="modal-dialog">
+			<!-- Modal content -->
+			<div class="modal-content">
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h5 class="modal-title">
+						Bạn có muốn xóa <span style="color: red;"> item </span>này không?
+					</h5>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body" style="margin: auto;">
+					<button id="btn-delete-user" type="button" class="btn btn-primary">Xác
+						nhận</button>
+					<span class="closeModalDelete btn btn-primary" data-dismiss="modal"
+						style="width: 90px;">Hủy</span>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<th:block id="user-resources">
+   <script th:src="@{/assets/js/user.js}"></script>
+</th:block>
+
+</html>
