@@ -6,6 +6,7 @@ public class User {
 	private Long id;
 	private String firstName;
 	private String lastName;
+	private String email;
 	private String username;
 	private String password;
 	private Boolean enabled;
@@ -28,6 +29,12 @@ public class User {
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public String getUsername() {
 		return username;

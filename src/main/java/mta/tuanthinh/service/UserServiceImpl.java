@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import mta.tuanthinh.client.HttpURLConnectionServer;
 import mta.tuanthinh.entity.User;
 
-@Service
+@Service("userServiceImpl")
 public class UserServiceImpl implements UserService{
 
 	@Autowired
@@ -97,5 +97,4 @@ public class UserServiceImpl implements UserService{
 		}
 		return null;
 	}
-	
 }
