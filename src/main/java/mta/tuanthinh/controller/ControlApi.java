@@ -13,42 +13,37 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import mta.tuanthinh.entity.Role;
-import mta.tuanthinh.services.RoleService;
+import mta.tuanthinh.entity.Control;
+import mta.tuanthinh.services.ControlService;
 
 @RestController
-@RequestMapping("/role")
-public class RoleController {
+@RequestMapping("/api/control")
+public class ControlApi {
 	@Autowired
-	private RoleService roleService;
+	private ControlService controlService;
 	
 	@GetMapping(value = "/all", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public List<Role> findAll(){
-		return (List<Role>) roleService.findAll();
+	public List<Control> findAll(){
+		return controlService.findAll();
 	}
 	
 	@GetMapping(value = "/id/{id}", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public Role findById(@PathVariable("id") Long id){
-		return roleService.findById(id);
-	}
-	
-	@GetMapping(value = "/name/{rolename}", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public Role findByRolename(@PathVariable("roleName") String rolename) {
-		return roleService.findByRolename(rolename);
+	public Control findById(@PathVariable Long id){
+		return controlService.findById(id);
 	}
 	
 	@PostMapping(value = "/add", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public Role save(@RequestBody Role role) {
-		return roleService.save(role);
+	public Control save(@RequestBody Control control) {
+		return controlService.save(control);
 	}
 	
 	@PutMapping(value = "/edit", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public Role updateRole(@RequestBody Role role) {
-		return roleService.update(role);
+	public Control update(@RequestBody Control control) {
+		return controlService.save(control);
 	}
 	
 	@DeleteMapping(value = "/delete/{id}", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public String deleteById(@PathVariable("id") Long id) {
-		return roleService.deleteById(id);
+	public String deleteById(@PathVariable Long id) {
+		return controlService.deleteById(id);
 	}
 }

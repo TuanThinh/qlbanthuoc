@@ -41,7 +41,10 @@ public class MainController {
 	public String ManagerUser() {
 		return "manager-user";
 	}
-	
+	@RequestMapping("/thuoc")
+	public String ManagerDrug() {
+		return "quan-ly-thuoc";
+	}
 	@RequestMapping("/caching")
 	public String Caching() {
 		return "caching";

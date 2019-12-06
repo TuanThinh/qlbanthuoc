@@ -1,4 +1,4 @@
-package mta.tuanthinh.service;
+package mta.tuanthinh.services;
 
 import java.util.List;
 

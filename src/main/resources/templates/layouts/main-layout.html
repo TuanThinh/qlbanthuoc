@@ -48,11 +48,21 @@
 <!--                         <a th:href="@{/map}"> <i class="menu-icon fa fa-globe"></i>Google Map </a> -->
 <!--                     </li> -->
                     <li>
-                        <a th:href="@{/manager-user}"> <i class="menu-icon fa fa-group"></i>Manager User </a>
+                        <a th:href="@{/manager-user}"> <i class="menu-icon fa fa-group"></i>Quản lý tài khoản </a>
                     </li>
                     <li>
-                        <a th:href="@{/caching}"> <i class="menu-icon fa fa-retweet"></i>Caching </a>
+                        <a th:href="@{/hoa-don-xuất}"> <i class="menu-icon fa fa-group"></i>Quản lý Hóa đơn nhập</a>
                     </li>
+                    <li>
+                        <a th:href="@{/hoa-don-xuat}"> <i class="menu-icon fa fa-group"></i>Quản lý Hóa đơn xuất</a>
+                    </li>
+                    <li>
+                        <a th:href="@{/thuoc}"> <i class="menu-icon fa fa-group"></i>Quản lý sản phẩm </a>
+                    </li>
+                    
+                    <!-- <li>
+                        <a th:href="@{/caching}"> <i class="menu-icon fa fa-retweet"></i>Caching </a>
+                    </li> -->
                     <h3 class="menu-title">UI elements</h3><!-- /.menu-title -->
                     <li class="menu-item-has-children dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-laptop"></i>Components</a>
@@ -290,7 +300,13 @@
     <script th:src="@{/vendors/popper.js/popper.min.js}"></script>
     <script th:src="@{/vendors/bootstrap/js/bootstrap.min.js}"></script>
     <script th:src = "@{/assets/js/jquery-ui.js}"></script>
-     <script th:src="@{/assets/js/main.js}"></script>
+    <script th:src="@{/assets/js/main.js}"></script>
+    <script th:src="@{/vendors/datepicker/datepicker.js}"></script>
+    <script >
+	    $('.input-datepicker').datepicker({
+	        format: 'yyyy-MM-dd'
+	    });
+    </script> 
 	<th:block th:replace="${otherStaticResources} ?: ~{}"></th:block>
 </body>
 </html>

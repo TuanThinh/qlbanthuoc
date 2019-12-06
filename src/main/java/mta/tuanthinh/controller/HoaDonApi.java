@@ -13,42 +13,37 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import mta.tuanthinh.entity.Role;
-import mta.tuanthinh.services.RoleService;
+import mta.tuanthinh.entity.HoaDon;
+import mta.tuanthinh.services.HoaDonService;;
 
 @RestController
-@RequestMapping("/role")
-public class RoleController {
+@RequestMapping("/api/hoa-don")
+public class HoaDonApi {
 	@Autowired
-	private RoleService roleService;
+	private HoaDonService hoaDonService;
 	
 	@GetMapping(value = "/all", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public List<Role> findAll(){
-		return (List<Role>) roleService.findAll();
+	public List<HoaDon> findAll(){
+		return hoaDonService.findAll();
 	}
 	
 	@GetMapping(value = "/id/{id}", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public Role findById(@PathVariable("id") Long id){
-		return roleService.findById(id);
-	}
-	
-	@GetMapping(value = "/name/{rolename}", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public Role findByRolename(@PathVariable("roleName") String rolename) {
-		return roleService.findByRolename(rolename);
+	public HoaDon findById(@PathVariable Long id){
+		return hoaDonService.findById(id);
 	}
 	
 	@PostMapping(value = "/add", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public Role save(@RequestBody Role role) {
-		return roleService.save(role);
+	public HoaDon save(@RequestBody HoaDon hoaDon) {
+		return hoaDonService.save(hoaDon);
 	}
 	
 	@PutMapping(value = "/edit", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public Role updateRole(@RequestBody Role role) {
-		return roleService.update(role);
+	public HoaDon update(@RequestBody HoaDon hoaDon) {
+		return hoaDonService.save(hoaDon);
 	}
 	
 	@DeleteMapping(value = "/delete/{id}", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public String deleteById(@PathVariable("id") Long id) {
-		return roleService.deleteById(id);
+	public String deleteById(@PathVariable Long id) {
+		return hoaDonService.deleteById(id);
 	}
 }

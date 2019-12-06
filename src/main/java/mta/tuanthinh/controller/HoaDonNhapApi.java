@@ -13,42 +13,37 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import mta.tuanthinh.entity.Role;
-import mta.tuanthinh.services.RoleService;
+import mta.tuanthinh.entity.HoaDonNhap;
+import mta.tuanthinh.services.HoaDonNhapService;
 
 @RestController
-@RequestMapping("/role")
-public class RoleController {
+@RequestMapping("/api/hoa-don-nhap")
+public class HoaDonNhapApi {
 	@Autowired
-	private RoleService roleService;
+	private HoaDonNhapService hoaDonNhapService;
 	
 	@GetMapping(value = "/all", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public List<Role> findAll(){
-		return (List<Role>) roleService.findAll();
+	public List<HoaDonNhap> findAll(){
+		return hoaDonNhapService.findAll();
 	}
 	
 	@GetMapping(value = "/id/{id}", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public Role findById(@PathVariable("id") Long id){
-		return roleService.findById(id);
-	}
-	
-	@GetMapping(value = "/name/{rolename}", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public Role findByRolename(@PathVariable("roleName") String rolename) {
-		return roleService.findByRolename(rolename);
+	public HoaDonNhap findById(@PathVariable Long id){
+		return hoaDonNhapService.findById(id);
 	}
 	
 	@PostMapping(value = "/add", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public Role save(@RequestBody Role role) {
-		return roleService.save(role);
+	public HoaDonNhap save(@RequestBody HoaDonNhap hoaDonNhap) {
+		return hoaDonNhapService.save(hoaDonNhap);
 	}
 	
 	@PutMapping(value = "/edit", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public Role updateRole(@RequestBody Role role) {
-		return roleService.update(role);
+	public HoaDonNhap update(@RequestBody HoaDonNhap hoaDonNhap) {
+		return hoaDonNhapService.save(hoaDonNhap);
 	}
 	
 	@DeleteMapping(value = "/delete/{id}", produces = {MediaType.APPLICATION_JSON_VALUE})
-	public String deleteById(@PathVariable("id") Long id) {
-		return roleService.deleteById(id);
+	public String deleteById(@PathVariable Long id) {
+		return hoaDonNhapService.deleteById(id);
 	}
 }

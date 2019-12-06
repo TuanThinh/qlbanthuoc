@@ -1,4 +1,4 @@
-package mta.tuanthinh.service;
+package mta.tuanthinh.services;
 
 import java.util.List;
 
@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import mta.tuanthinh.client.HttpURLConnectionServer;
-import mta.tuanthinh.entity.Role;
+import mta.tuanthinh.entity.ChiTietHoaDonNhap;
 
 @Service
-public class RoleServiceImpl implements RoleService {
+public class ChiTietHoaDonNhapServiceImpl implements ChiTietHoaDonNhapService{
 
 	@Autowired
 	private HttpURLConnectionServer HttpURLConnectionClient;
@@ -18,10 +18,10 @@ public class RoleServiceImpl implements RoleService {
 	private String serverURL;
 	
 	@Override
-	public List<Role> findAll() {
-		String URL = serverURL + "/api/role/all";
+	public List<ChiTietHoaDonNhap> findAll() {
+		String URL = serverURL + "/api/chi-tiet-hoa-don-nhap/all";
 		try {
-			return HttpURLConnectionClient.getListResult(URL, Role.class);
+			return HttpURLConnectionClient.getListResult(URL, ChiTietHoaDonNhap.class);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -30,10 +30,10 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
-	public Role findById(Long id) {
-		String URL = serverURL + "/api/role/id/" + id;
+	public ChiTietHoaDonNhap findById(Long id) {
+		String URL = serverURL + "/api/chi-tiet-hoa-don-nhap/id/" + id;
 		try {
-			return HttpURLConnectionClient.getUniqueResult(URL, Role.class);
+			return HttpURLConnectionClient.getUniqueResult(URL, ChiTietHoaDonNhap.class);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -42,10 +42,10 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
-	public Role findByRolename(String rolename) {
-		String URL = serverURL + "/api/role/rolename/" + rolename;
+	public ChiTietHoaDonNhap save(ChiTietHoaDonNhap ChiTietHoaDonNhap) {
+		String URL = serverURL + "/api/chi-tiet-hoa-don-nhap/add";
 		try {
-			return HttpURLConnectionClient.getUniqueResult(URL, Role.class);
+			return HttpURLConnectionClient.PostResult(URL, ChiTietHoaDonNhap.class);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -54,32 +54,20 @@ public class RoleServiceImpl implements RoleService {
 	}
 
 	@Override
-	public Role save(Role role) {
-		String URL = serverURL + "/api/role/add";
+	public ChiTietHoaDonNhap update(ChiTietHoaDonNhap ChiTietHoaDonNhap) {
+		String URL = serverURL + "/api/chi-tiet-hoa-don-nhap/edit";
 		try {
-			return HttpURLConnectionClient.PostResult(URL, Role.class);
+			return HttpURLConnectionClient.PutResult(URL, ChiTietHoaDonNhap.class);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
 	}
-
-	@Override
-	public Role update(Role role) {
-		String URL = serverURL + "/api/role/edit";
-		try {
-			return HttpURLConnectionClient.PutResult(URL, Role.class);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}
-
+	
 	@Override
 	public String deleteById(Long id) {
-		String URL = serverURL + "/api/role/delete/" + id;
+		String URL = serverURL + "/api/chi-tiet-hoa-don-nhap/delete/" + id;
 		try {
 			return HttpURLConnectionClient.sendDeleteRequest(URL);
 		} catch (Exception e) {

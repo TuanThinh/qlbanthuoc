@@ -13,42 +13,42 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import mta.tuanthinh.entity.User;
-import mta.tuanthinh.services.UserService;
+import mta.tuanthinh.entity.Thuoc;
+import mta.tuanthinh.services.ThuocService;
 
 @RestController
-@RequestMapping("/user")
-public class UserController {
+@RequestMapping("/api/thuoc")
+public class ThuocApi {
 	@Autowired
-	private UserService userService;
+	private ThuocService thuocService;
 
 	@GetMapping(value = "/all", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public List<User> geList(){
-		return (List<User>) userService.findAll();
+	public List<Thuoc> geList() {
+		return (List<Thuoc>) thuocService.findAll();
 	}
 
 	@GetMapping(value = "/id/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public User getUserById(@PathVariable Long id) {
-		return userService.findById(id);
+	public Thuoc getThuocById(@PathVariable Long id) {
+		return thuocService.findById(id);
 	}
 
-	@GetMapping(value = "/username/{username}", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public User getUserByUsername(@PathVariable String username) {
-		return userService.findByUsername(username);
-	}
+//	@GetMapping(value = "/username/{username}", produces = { MediaType.APPLICATION_JSON_VALUE })
+//	public Thuoc getUserByTenThuoc(@PathVariable String name) {
+//		return (Thuoc) thuocService.findByTenThuoc(name);
+//	}
 
 	@PostMapping(value = "/add", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public User addUser(@RequestBody User user) {
-		return userService.save(user);
+	public Thuoc add(@RequestBody Thuoc thuoc) {
+		return thuocService.save(thuoc);
 	}
 
 	@PutMapping(value = "/edit", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public User updateUser(@RequestBody User user) {
-		return userService.update(user);
+	public Thuoc update(@RequestBody Thuoc thuoc) {
+		return thuocService.update(thuoc);
 	}
 
 	@DeleteMapping(value = "/delete/{id}", produces = { MediaType.APPLICATION_JSON_VALUE })
 	public String deleteUser(@PathVariable Long id) {
-		return userService.deleteById(id);
+		return thuocService.deleteById(id);
 	}
 }

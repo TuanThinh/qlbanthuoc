@@ -1,18 +1,16 @@
-package mta.tuanthinh.service;
+package mta.tuanthinh.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import mta.tuanthinh.client.HttpURLConnectionServer;
-import mta.tuanthinh.entity.Permission;
-import mta.tuanthinh.entity.Role;
+import mta.tuanthinh.entity.Thuoc;
 
 @Service
-public class PermissionServiceImpl implements PermissionService{
+public class ThuocServiceImpl implements ThuocService{
 
 	@Autowired
 	private HttpURLConnectionServer HttpURLConnectionClient;
@@ -20,10 +18,10 @@ public class PermissionServiceImpl implements PermissionService{
 	private String serverURL;
 	
 	@Override
-	public List<Permission> findAll() {
-		String URL = serverURL + "/api/permission/all";
+	public List<Thuoc> findAll() {
+		String URL = serverURL + "/api/thuoc/all";
 		try {
-			return HttpURLConnectionClient.getListResult(URL, Permission.class);
+			return HttpURLConnectionClient.getListResult(URL, Thuoc.class);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -32,10 +30,10 @@ public class PermissionServiceImpl implements PermissionService{
 	}
 
 	@Override
-	public Permission findById(Long id) {
-		String URL = serverURL + "/api/permission/id/" + id;
+	public Thuoc findById(Long id) {
+		String URL = serverURL + "/api/thuoc/id/" + id;
 		try {
-			return HttpURLConnectionClient.getUniqueResult(URL, Permission.class);
+			return HttpURLConnectionClient.getUniqueResult(URL, Thuoc.class);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -44,10 +42,10 @@ public class PermissionServiceImpl implements PermissionService{
 	}
 
 	@Override
-	public Permission save(Permission permission) {
-		String URL = serverURL + "/api/permission/add";
+	public Thuoc save(Thuoc thuoc) {
+		String URL = serverURL + "/api/thuoc/add";
 		try {
-			return HttpURLConnectionClient.PostResult(URL, Permission.class);
+			return HttpURLConnectionClient.PostResult(URL, Thuoc.class);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -56,10 +54,10 @@ public class PermissionServiceImpl implements PermissionService{
 	}
 
 	@Override
-	public Permission update(Permission permission) {
-		String URL = serverURL + "/api/permission/edit";
+	public Thuoc update(Thuoc thuoc) {
+		String URL = serverURL + "/api/thuoc/edit";
 		try {
-			return HttpURLConnectionClient.PutResult(URL, Permission.class);
+			return HttpURLConnectionClient.PutResult(URL, Thuoc.class);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -69,7 +67,7 @@ public class PermissionServiceImpl implements PermissionService{
 	
 	@Override
 	public String deleteById(Long id) {
-		String URL = serverURL + "/api/permission/delete/" + id;
+		String URL = serverURL + "/api/thuoc/delete/" + id;
 		try {
 			return HttpURLConnectionClient.sendDeleteRequest(URL);
 		} catch (Exception e) {
@@ -79,4 +77,11 @@ public class PermissionServiceImpl implements PermissionService{
 		return null;
 	}
 
+	@Override
+	public List<Thuoc> findByTenThuoc(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 }
