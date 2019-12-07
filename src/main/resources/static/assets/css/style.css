@@ -2489,3 +2489,6 @@ ul#ui-id-1 {
     left: 1060px;
     top: 58px;
 }
+.datepicker-container {
+	z-index: 1051 !important;
+}

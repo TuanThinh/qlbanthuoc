@@ -37,7 +37,7 @@ public class ThuocApi {
 //		return (Thuoc) thuocService.findByTenThuoc(name);
 //	}
 
-	@PostMapping(value = "/add", produces = { MediaType.APPLICATION_JSON_VALUE })
+	@PostMapping(value = "/add", produces = { MediaType.APPLICATION_JSON_VALUE  + ";charset=utf-8"})
 	public Thuoc add(@RequestBody Thuoc thuoc) {
 		return thuocService.save(thuoc);
 	}

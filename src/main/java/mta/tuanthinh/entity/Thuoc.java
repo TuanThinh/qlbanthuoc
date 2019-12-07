@@ -1,17 +1,23 @@
 package mta.tuanthinh.entity;
 
+import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-public class Thuoc {
+public class Thuoc implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	private Long id;
-	private String hinhANh;
+	private String hinhAnh;
 	private String tenThuoc;
 	private String chucNang;
 	private Date ngaySanXuat;
 	private Date hanSuDung;
 	private String ghiChu;
 	private NhaCungCap nhaCungCap;
+	private Integer soLuongTon;
 	private List<ChiTietDonThuoc> listThuoc;
 	private List<ChiTietHoaDonNhap> listChiTietHoaDonNhap;
 
@@ -40,11 +46,11 @@ public class Thuoc {
 	}
 
 	public String getHinhANh() {
-		return hinhANh;
+		return hinhAnh;
 	}
 
 	public void setHinhANh(String hinhANh) {
-		this.hinhANh = hinhANh;
+		this.hinhAnh = hinhANh;
 	}
 
 	public String getTenThuoc() {
@@ -63,16 +69,18 @@ public class Thuoc {
 		this.chucNang = chucNang;
 	}
 
-	public Date getNgaySanXuat() {
-		return ngaySanXuat;
+	public String getNgaySanXuat() {
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		return df.format(ngaySanXuat);
 	}
 
 	public void setNgaySanXuat(Date ngaySanXuat) {
 		this.ngaySanXuat = ngaySanXuat;
 	}
 
-	public Date getHanSuDung() {
-		return hanSuDung;
+	public String getHanSuDung() {
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+		return df.format(hanSuDung);
 	}
 
 	public void setHanSuDung(Date hanSuDung) {
@@ -94,4 +102,13 @@ public class Thuoc {
 	public void setNhaCungCap(NhaCungCap nhaCungCap) {
 		this.nhaCungCap = nhaCungCap;
 	}
+
+	public Integer getSoLuongTon() {
+		return soLuongTon;
+	}
+
+	public void setSoLuongTon(Integer soLuongTon) {
+		this.soLuongTon = soLuongTon;
+	}
+	
 }

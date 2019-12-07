@@ -17,7 +17,7 @@
     <link rel="stylesheet" th:href="@{/vendors/flag-icon-css/css/flag-icon.min.css}">
     <link th:href = "@{/assets/css/jquery-ui.css}" rel = "stylesheet">
     <link rel="stylesheet" th:href="@{/assets/css/style.css}">
-
+	<link rel="stylesheet" th:href="@{/vendors/datepicker/datepicker.css}">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
 </head>
@@ -289,7 +289,7 @@
             </div>
         </div>
 
-        <div class="content mt-3" th:insert="${mainContent}">
+        <div class="content mt-3" th:insert="${mainContent}">	
 
         </div> <!-- .content -->
     </div><!-- /#right-panel -->
@@ -302,11 +302,14 @@
     <script th:src = "@{/assets/js/jquery-ui.js}"></script>
     <script th:src="@{/assets/js/main.js}"></script>
     <script th:src="@{/vendors/datepicker/datepicker.js}"></script>
-    <script >
-	    $('.input-datepicker').datepicker({
-	        format: 'yyyy-MM-dd'
-	    });
-    </script> 
+
+	<script type="text/javascript">
+		jQuery(document).ready(function($) {
+			$('.input-datepicker').datepicker({
+		        format: 'yyyy-MM-dd'
+		    });
+		});
+	</script>
 	<th:block th:replace="${otherStaticResources} ?: ~{}"></th:block>
 </body>
 </html>

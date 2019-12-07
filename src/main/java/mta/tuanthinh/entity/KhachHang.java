@@ -1,8 +1,11 @@
 package mta.tuanthinh.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class KhachHang {
+public class KhachHang implements Serializable{
+	private static final long serialVersionUID = 1L;
+	
 	private Long id;
 	private String firstName;
 	private String lastName;
